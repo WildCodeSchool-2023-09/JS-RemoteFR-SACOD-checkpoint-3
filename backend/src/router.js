@@ -26,7 +26,9 @@ router.get("/tiles", tileControllers.browse);
 // Step 3
 /* ************************************************************************* */
 
-router.put("/boats/:id", boatControllers.edit);
+const tileExists = require("./services/tileExists");
+
+router.put("/boats/:id", tileExists, boatControllers.edit);
 
 /* ************************************************************************* */
 // Step 4
