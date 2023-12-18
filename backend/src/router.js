@@ -15,7 +15,7 @@ router.get("/tiles", tileControllers.browse);
 const gameControllers = require("./controllers/gameControllers");
 
 router.post("/games", gameControllers.add);
-
+router.put("/boats/:id", boatControllers.edit);
 /* ************************************************************************* */
 
 module.exports = router;
