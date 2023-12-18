@@ -5,6 +5,17 @@ class TileManager extends AbstractManager {
     super({ table: "tile" });
   }
 
+  async readByCoordinates(coordX, coordY) {
+    // Execute the SQL SELECT query to retrieve all tiles from the "tile" table
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} WHERE coord_x = ? AND coord_y = ?`,
+      [coordX, coordY]
+    );
+
+    // Return the array of tiles
+    return rows;
+  }
+
   async readAll() {
     // Execute the SQL SELECT query to retrieve all tiles from the "tile" table
     const [rows] = await this.database.query(`select * from ${this.table}`);
