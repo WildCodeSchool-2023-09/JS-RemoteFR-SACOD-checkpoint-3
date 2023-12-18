@@ -15,7 +15,7 @@ class BoatManager extends AbstractManager {
       FROM 
         ${this.table} AS boat
       LEFT JOIN 
-        tile ON boat.coord_x = tile.coord_x AND boat.coord_y = tile.coord_y
+        tile as tile ON boat.coord_x = tile.coord_x AND boat.coord_y = tile.coord_y
     `);
 
     return rows;
