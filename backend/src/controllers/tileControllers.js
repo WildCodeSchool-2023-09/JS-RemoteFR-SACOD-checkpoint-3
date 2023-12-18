@@ -1,8 +1,12 @@
 const tables = require("../tables");
 
+/* ************************************************************************* */
+// Step 2
+/* ************************************************************************* */
+
 const browse = async (req, res, next) => {
   try {
-    // Fetch all boats from the database
+    // Fetch all tile from the database
     const tile = await tables.tile.readAll();
 
     // Respond with the boats in JSON format

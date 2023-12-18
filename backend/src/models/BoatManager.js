@@ -13,7 +13,9 @@ class BoatManager extends AbstractManager {
     return rows;
   }
 
+  /* ************************************************************************* */
   // Step 3
+  /* ************************************************************************* */
 
   async update(id, coordX, coordY) {
     const [rows] = await this.database.query(

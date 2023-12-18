@@ -13,6 +13,10 @@ const browse = async (req, res, next) => {
   }
 };
 
+/* ************************************************************************* */
+// Step 3
+/* ************************************************************************* */
+
 const edit = async (req, res, next) => {
   // eslint-disable-next-line radix
   const id = parseInt(req.params.id);
@@ -21,10 +25,10 @@ const edit = async (req, res, next) => {
 
   try {
     // update one boat
-    const boats = await tables.boat.update(id, coordX, coordY);
+    await tables.boat.update(id, coordX, coordY);
 
     // Respond with the boats in JSON format
-    res.json(boats);
+    res.status(204).send();
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
