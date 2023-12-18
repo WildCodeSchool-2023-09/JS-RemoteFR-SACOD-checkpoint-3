@@ -1,5 +1,7 @@
 const express = require("express");
 
+const tileExists = require("./services/tileExists");
+
 const router = express.Router();
 
 /* ************************************************************************* */
@@ -9,7 +11,7 @@ const router = express.Router();
 const boatControllers = require("./controllers/boatControllers");
 
 router.get("/boats", boatControllers.browse);
-router.put("/boats/:id", boatControllers.edit);
+router.put("/boats/:id", tileExists, boatControllers.edit);
 
 const gameControllers = require("./controllers/gameControllers");
 
