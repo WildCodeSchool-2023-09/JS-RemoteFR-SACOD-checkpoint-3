@@ -13,33 +13,14 @@ const browse = async (req, res, next) => {
   }
 };
 
-const update = async (req, res) => {
-  try {
-    const boatId = req.params.id;
-    const { name, coordX, coordY } = req.body;
-
-    const updateResult = await tables.boat.update(
-      { name, coordX, coordY },
-      { where: { id: boatId } }
-    );
-
-    if (updateResult.affectedRows > 0) {
-      res.status(204).end();
-    } else {
-      res.status(404).end();
-    }
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};
 const edit = async (req, res, next) => {
   try {
     const boatId = req.params.id;
-    const { name, coordX, coordY } = req.body;
 
     const updateResult = await tables.boat.update(
-      { name, coordX, coordY },
-      { where: { id: boatId } }
+      boatId,
+      req.body.coord_x,
+      req.body.coord_y
     );
 
     if (updateResult.affectedRows > 0) {
@@ -55,6 +36,5 @@ const edit = async (req, res, next) => {
 
 module.exports = {
   browse,
-  update,
   edit,
 };
