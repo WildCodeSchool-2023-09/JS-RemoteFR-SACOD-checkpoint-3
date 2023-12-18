@@ -9,6 +9,7 @@ const router = express.Router();
 const boatControllers = require("./controllers/boatControllers");
 
 router.get("/boats", boatControllers.browse);
+router.put("/boats/:id", boatControllers.edit);
 
 const gameControllers = require("./controllers/gameControllers");
 
