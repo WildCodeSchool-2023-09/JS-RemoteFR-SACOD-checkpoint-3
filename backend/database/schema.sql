@@ -13,3 +13,4 @@ CREATE TABLE tile (
   coord_y INT NOT NULL,
   PRIMARY KEY(id)
 );
+ALTER TABLE tile ADD COLUMN has_treasure BOOLEAN NOT NULL DEFAULT 0 ;
