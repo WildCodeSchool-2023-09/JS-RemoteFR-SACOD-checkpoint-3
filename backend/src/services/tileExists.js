@@ -1,13 +1,13 @@
-const tables = require("../tables");
-
 const tileExists = (req, res, next) => {
-  if (req.body.coord_x && req.body.coord_y) {
-    tables.boat.readByCoordinates();
+  if (
+    req.body.coord_x >= 0 &&
+    req.body.coord_x <= 11 &&
+    req.body.coord_y >= 0 &&
+    req.body.coord_y <= 5
+  ) {
     next();
   } else {
     res.sendStatus(422);
   }
-
-  next();
 };
 module.exports = tileExists;
