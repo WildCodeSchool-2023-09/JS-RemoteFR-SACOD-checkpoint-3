@@ -13,3 +13,13 @@ CREATE TABLE tile (
   coord_y INT NOT NULL,
   PRIMARY KEY(id)
 );
+
+/* 
+
+Step 1 ✅ : ajouter le champ "has_treasure" dans la table "tile" (booléen, non nul, false par défaut).
+
+    ALTER TABLE tile ADD has_treasure BOOLEAN DEFAULT FALSE NOT NULL;
+
+Step 2 ✅ : créer une route GET /api/tiles (tu peux suivre le modèle de GET /api/boats).
+
+Step 3 : 
