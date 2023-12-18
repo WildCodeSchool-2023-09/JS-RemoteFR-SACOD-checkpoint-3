@@ -13,3 +13,5 @@ CREATE TABLE tile (
   coord_y INT NOT NULL,
   PRIMARY KEY(id)
 );
+
+ALTER TABLE tile ADD(has_treasure boolean  NOT NULLDefault 0);
