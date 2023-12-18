@@ -5,13 +5,21 @@ class BoatManager extends AbstractManager {
     super({ table: "boat" });
   }
 
-  async readAll() {
+  async readAll(boatName) {
     // Execute the SQL SELECT query to retrieve all boats from the "boat" table
+    console.info(boatName);
+    if (boatName == null) {
+      const [rows] = await this.database.query(
+        `select b.coord_x, b.coord_y, b.id, b.name, t.type, t.has_treasure from ${this.table} AS b JOIN tile AS t ON b.coord_x=t.coord_x AND b.coord_y=t.coord_y`
+      );
+      return rows;
+    }
     const [rows] = await this.database.query(
-      `select b.coord_x, b.coord_y, b.id, b.name, t.type, t.has_treasure from ${this.table} AS b JOIN tile AS t ON b.coord_x=t.coord_x AND b.coord_y=t.coord_y`
+      `select b.coord_x, b.coord_y, b.id, b.name, t.type, t.has_treasure from ${this.table} AS b JOIN tile AS t ON b.coord_x=t.coord_x AND b.coord_y=t.coord_y where ?
+      `,
+      [boatName]
     );
 
-    // Return the array of boats
     return rows;
   }
 
