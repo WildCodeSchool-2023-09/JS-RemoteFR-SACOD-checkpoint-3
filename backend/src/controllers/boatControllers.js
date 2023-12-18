@@ -28,8 +28,22 @@ const edit = async (req, res, next) => {
     next(err);
   }
 };
+const read = async (req, res, next) => {
+  try {
+    const boat = await tables.boat.read(req.params.id);
+
+    if (boat == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(boat);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
 
 module.exports = {
   browse,
   edit,
+  read,
 };

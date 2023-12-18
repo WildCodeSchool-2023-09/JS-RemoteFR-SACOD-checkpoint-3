@@ -20,6 +20,16 @@ class BoatManager extends AbstractManager {
     );
     return result;
   }
+
+  async read(id) {
+    const [rows] = await this.database.query(
+      `
+      select * from ${this.table} where id = ?`,
+      [id]
+    );
+
+    return rows;
+  }
 }
 
 module.exports = BoatManager;
