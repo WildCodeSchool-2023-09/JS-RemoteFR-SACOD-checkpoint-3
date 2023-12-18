@@ -5,11 +5,12 @@ const router = express.Router();
 /* ************************************************************************* */
 // Define Your API Routes Here
 /* ************************************************************************* */
-
+const middleware = require("./services/tileExists");
 const boatControllers = require("./controllers/boatControllers");
 
 router.get("/boats", boatControllers.browse);
-router.put("/boats/:id", boatControllers.edit);
+router.get("/boats", boatControllers.read);
+router.put("/boats/:id", middleware, boatControllers.edit);
 
 const tileControllers = require("./controllers/tileControllers");
 
