@@ -7,8 +7,10 @@ const router = express.Router();
 /* ************************************************************************* */
 
 const boatControllers = require("./controllers/boatControllers");
+const tileControllers = require("./controllers/tileControllers");
 
 router.get("/boats", boatControllers.browse);
+router.get("/tiles", tileControllers.browse);
 
 const gameControllers = require("./controllers/gameControllers");
 
