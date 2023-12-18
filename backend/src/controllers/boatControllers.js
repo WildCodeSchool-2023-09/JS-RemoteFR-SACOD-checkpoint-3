@@ -27,7 +27,7 @@ const edit = async (req, res, next) => {
     // update one boat
     await tables.boat.update(id, coordX, coordY);
 
-    // Respond with the boats in JSON format
+    // Respond with a 204 status (No Content)
     res.status(204).send();
   } catch (err) {
     // Pass any errors to the error-handling middleware
