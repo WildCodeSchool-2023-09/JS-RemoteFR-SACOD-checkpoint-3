@@ -14,14 +14,25 @@ class BoatManager extends AbstractManager {
   }
 
   async update(id, coordX, coordY) {
-    const [result] = await this.database.query(
-      `update ${this.table} SET coord_x = ?, coord_y = ? WHERE id = ?`,
+    const [rows] = await this.database.query(
+      `update  ${this.table} set coord_x=?, coord_y=? where id=?`,
       [coordX, coordY, id]
     );
-    if (result.affectedRows === 0) {
-      throw new Error();
-    }
-    return result;
+    console.info(rows);
+
+    return rows;
   }
 }
 module.exports = BoatManager;
+
+// async update(id, coordX, coordY) {
+//  const [result] = await this.database.query(
+//   `update ${this.table} SET coord_x = ?, coord_y = ? WHERE id = ?`,
+//  [coordX, coordY, id]
+// );
+// if (result.affectedRows === 0) {
+//    throw new Error();
+//   }
+//   return result;
+// }
+// }
